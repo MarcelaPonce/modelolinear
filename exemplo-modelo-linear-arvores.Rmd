@@ -62,3 +62,4 @@ summary(m3)
 AIC(m3)
 ```
 Com base nestes resultados, qual modelo usaremos? discuta
+Análise AIC recomenda o uso do modelo 3
