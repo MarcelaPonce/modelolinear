@@ -10,6 +10,7 @@ sample_n(Salaries, 3)
 # Compute the model
 model <- lm(salary ~ sex, data = Salaries)
 summary(model)$coef
+Anova(model)
 contrasts(Salaries$sex)
 #
 model2 <- lm(salary ~ yrs.service + rank + discipline + sex, data = Salaries)
