@@ -1,0 +1,64 @@
+---
+title: "Modelos Lineares com AIC"
+output: html_notebook
+---
+
+DICAS PARA O R NOTEBOOK
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+
+
+EXEMPLO TRABALHADO
+Primeiro vamos fazer o grafico das variaveis do dataframe trees
+```{r}
+plot(trees)
+```
+
+Agora vamos fazer o modelo basico olhando volume (dependente) vs diametro (independente)
+
+```{r}
+m1 = lm(Volume~Girth,data=trees)
+summary(m1)
+
+```
+
+Agora vamos acrescentar a altura como independente no modelo
+
+```{r}
+m2 = lm(Volume~Girth+Height,data=trees)
+summary(m2)
+
+```
+
+Vamos tentar agora incluir a interacao diametro altura
+
+```{r}
+m3 = lm(Volume~Girth*Height,data=trees)
+summary(m3)
+```
+
+Vamos fazer o grafico deste modelo
+
+```{r}
+plot(m3)
+```
+
+E vamos ver se os residuos tem distribuicao normal
+```{r}
+shapiro.test(residuals(m3))
+
+```
+
+Vamos ver os sumarios e o AIC de cada modelo
+
+```{r}
+summary(m1)
+AIC(m1)
+summary(m2)
+AIC(m2)
+summary(m3)
+AIC(m3)
+```
+Com base nestes resultados, qual modelo usaremos? discuta
